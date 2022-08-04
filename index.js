@@ -15,33 +15,17 @@ const computerSelection = getComputerChoice();
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection == "rock" && computerSelection == "sissors") {
-    console.log(
-      "You win! " + `${playerSelection}` + " beats " + `${computerSelection}`
-    );
+    console.log(`You win! ${playerSelection} beats ${computerSelection}`);
   } else if (playerSelection == "paper" && computerSelection == "rock") {
-    console.log(
-      "You win! " + `${playerSelection}` + " beats " + `${computerSelection}`
-    );
+    console.log(`You win! ${playerSelection} beats ${computerSelection}`);
   } else if (playerSelection == "sissors" && computerSelection == "paper") {
-    console.log(
-      "You win! " + `${playerSelection}` + " beats " + `${computerSelection}`
-    );
+    console.log(`You win! ${playerSelection} beats ${computerSelection}`);
   } else if (playerSelection === computerSelection) {
     console.log(
-      "It's a tie! " +
-        `${playerSelection}` +
-        " cancells out " +
-        `${computerSelection}`
+      `It's a tie! ${playerSelection} cancells out ${computerSelection}`
     );
   } else {
-    console.log(
-      console.log(
-        "You lose. " +
-          `${playerSelection}` +
-          " loses to " +
-          `${computerSelection}`
-      )
-    );
+    console.log(`You lose. ${playerSelection} loses to ${computerSelection}`);
   }
 }
 
