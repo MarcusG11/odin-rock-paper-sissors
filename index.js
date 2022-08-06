@@ -1,30 +1,29 @@
 function getComputerChoice() {
-  const gameArray = ["rock", "paper", "scissors"];
+  const gameArray = ["Rock", "Paper", "Scissors"];
   const computerChoice = gameArray[~~(Math.random() * gameArray.length)];
   return computerChoice;
 }
 
 function getPlayerChoice() {
   const playerSelection = prompt("Choose wisely!");
-  return playerSelection;
+  return playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
 }
 
-const playerSelectionPrompt = getPlayerChoice();
-const playerSelection = playerSelectionPrompt.toLowerCase();
+const playerSelection = getPlayerChoice();
 const computerSelection = getComputerChoice();
 let userScore = 0;
 let computerScore = 0;
 
 function playRound(playerSelection, computerSelection) {
-  if (playerSelection == "rock" && computerSelection == "scissors") {
+  if (playerSelection == "Rock" && computerSelection == "Scissors") {
     console.log(`You win! ${playerSelection} beats ${computerSelection}`);
     userScore++;
     return userScore;
-  } else if (playerSelection == "paper" && computerSelection == "rock") {
+  } else if (playerSelection == "Paper" && computerSelection == "Rock") {
     console.log(`You win! ${playerSelection} beats ${computerSelection}`);
     userScore++;
     return userScore;
-  } else if (playerSelection == "scissors" && computerSelection == "paper") {
+  } else if (playerSelection == "Scissors" && computerSelection == "Paper") {
     console.log(`You win! ${playerSelection} beats ${computerSelection}`);
     userScore++;
     return userScore;
