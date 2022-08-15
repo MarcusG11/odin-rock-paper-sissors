@@ -1,25 +1,37 @@
+let userScore = 0;
+let computerScore = 0;
 function getComputerChoice() {
-  const gameArray = ["rock", "paper", "sissors"];
+  const gameArray = ["rock", "paper", "scissors"];
   const computerChoice = gameArray[~~(Math.random() * gameArray.length)];
   return computerChoice;
 }
 
-function getPlayerChoice() {
-  const playerSelection = prompt("Choose wisely!");
-  return playerSelection;
-}
+const btn1 = document.querySelector(".btn1");
+btn1.addEventListener("click", () => {
+  let playerSelection = "rock";
+  let computerSelection = getComputerChoice();
+  console.log(playRound(playerSelection, computerSelection));
+  scoreKeeper(userScore, computerScore);
+  currentScore();
+});
 
-let userScore = 0;
-let computerScore = 0;
+const btn2 = document.querySelector(".btn2");
+btn2.addEventListener("click", () => {
+  let playerSelection = "paper";
+  let computerSelection = getComputerChoice();
+  console.log(playRound(playerSelection, computerSelection));
+  scoreKeeper(userScore, computerScore);
+  currentScore();
+});
 
-function game() {
-  for (i = 0; i < 5; i++) {
-    const playerSelectionPrompt = getPlayerChoice();
-    const playerSelection = playerSelectionPrompt.toLowerCase();
-    const computerSelection = getComputerChoice();
-    playRound(playerSelection, computerSelection);
-  }
-}
+const btn3 = document.querySelector(".btn3");
+btn3.addEventListener("click", () => {
+  let playerSelection = "scissors";
+  let computerSelection = getComputerChoice();
+  console.log(playRound(playerSelection, computerSelection));
+  scoreKeeper(userScore, computerScore);
+  currentScore();
+});
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection == "rock" && computerSelection == "scissors") {
@@ -39,16 +51,31 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function whoWon() {
-  if (userScore > computerScore) {
-    return "Congrats! You won!";
-  } else {
-    return "Unlucky. The computer's won this round.";
+function scoreKeeper(userScore, computerScore) {
+  const logScore = document.querySelector(".running-score");
+  logScore.innerHTML = `User Score = ${userScore} Computer Score = ${computerScore}`;
+}
+
+function currentScore() {
+  if (userScore == 5 || computerScore == 5) {
+    whoWon();
   }
 }
 
-game();
-console.log(whoWon());
-// for (i = 0; i > 5; i++) {
-
-// }
+function whoWon() {
+  const logWinner = document.querySelector(".winOrLoss");
+  const goNext = document.querySelector(".playAgain");
+  const btn = document.createElement("button");
+  goNext.append(btn);
+  btn.textContent = "Play Again?";
+  btn.addEventListener("click", () => {
+    (userScore = 0), (computerScore = 0);
+    scoreKeeper(userScore, computerScore);
+    // goNext.remove(btn);
+  });
+  if (userScore > computerScore) {
+    logWinner.innerHTML = "Congrats! You won!";
+  } else {
+    logWinner.innerHTML = "Unlucky. The computer's won this round.";
+  }
+}
