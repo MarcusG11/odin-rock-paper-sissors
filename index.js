@@ -53,7 +53,7 @@ function playRound(playerSelection, computerSelection) {
 
 function scoreKeeper(userScore, computerScore) {
   const logScore = document.querySelector(".running-score");
-  logScore.innerHTML = `User Score = ${userScore} Computer Score = ${computerScore}`;
+  logScore.textContent = `User Score = ${userScore} Computer Score = ${computerScore}`;
 }
 
 function currentScore() {
@@ -71,11 +71,11 @@ function whoWon() {
   btn.addEventListener("click", () => {
     (userScore = 0), (computerScore = 0);
     scoreKeeper(userScore, computerScore);
-    // goNext.remove(btn);
+    btn.style.display = "none";
   });
   if (userScore > computerScore) {
-    logWinner.innerHTML = "Congrats! You won!";
+    logWinner.textContent = "Congrats! You won!";
   } else {
-    logWinner.innerHTML = "Unlucky. The computer's won this round.";
+    logWinner.textContent = "Unlucky. The computer's won this round.";
   }
 }
